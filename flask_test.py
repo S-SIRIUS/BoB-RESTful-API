@@ -3,10 +3,16 @@ import json
 import openai
 import pandas as pd
 from concurrent.futures import ThreadPoolExecutor
-from CoreLogicModule import Matching_ALGO
+from CoreModule import Core
 import functools
 
+
+# 이미 학습된 FastText 모델 로드
+from gensim.models.fasttext import load_facebook_model
+
 openai.api_key = 'my_api'
+model_path="./cc.ko.300.bin"
+model= load_facebook_model(model_path)
 
 app = Flask(__name__)
 
@@ -21,7 +27,7 @@ def process_text():
     text = request.json.get('text')
     print(text)
 
-    df = Matching_ALGO(text)
+    df = Core(text, model)
     with ThreadPoolExecutor(max_workers=5) as executor:
         func = functools.partial(get_response, df=df)
         answer_text = list(executor.map(func, range(len(df))))
