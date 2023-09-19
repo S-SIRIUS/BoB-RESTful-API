@@ -3,7 +3,8 @@
 📌 모듈화된 알고리즘과 Flask 기반의 RESTful API로 구성
 
 
-![ALGO structure](https://github.com/S-SIRIUS/BoB-RESTful-API/assets/109223193/f2b1afe6-c7c9-421d-9730-791d62f364b0)
+![Uploading Logic Structure.png…]()
+
 
 
 
