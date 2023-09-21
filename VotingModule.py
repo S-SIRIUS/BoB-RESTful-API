@@ -1,5 +1,6 @@
 from FirstShort_WeightModule import FirstShort_Weight
 from CosineSimilarity_WeightModule import CosineSimilarity_Weight
+from OverUnder_WeightModule import OverUnder_Weight
 
 
 def Voting(df, token_dict, filtered_items, model):
@@ -17,7 +18,8 @@ def Voting(df, token_dict, filtered_items, model):
         # 2 코사인 유사도 검사해서 일정치 이상인것들 해당하는 rule에 가중치 추가(유사단어)
         df = CosineSimilarity_Weight(token, df, filtered_items, model)
 
-        ## 3 앞뒤검사 
+        ## 3 앞뒤검사
+        df = OverUnder_Weight(token, df, filtered_items)
 
 
 
