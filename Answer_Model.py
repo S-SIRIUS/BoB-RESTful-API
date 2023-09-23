@@ -12,6 +12,6 @@ def Answer_Model(df):
     df.reset_index(drop=True, inplace=True)
     ans = ""
     for i in range(len(df)):
-        ans += str(i+1)+">" + "instuction: " + df['part'][i] + "에 해당하는 가이드라인은 이렇습니다." + "\n" + chatchain.run(
+        ans += str(i+1)+">" +" " + "instuction: " + df['part'][i] + "에 해당하는 가이드라인은 이렇습니다." + "\n" + chatchain.run(
             policy=df['matched_part'][i], instruction=df['instruction'][i]) + "\n\n\n\n"
     return ans
