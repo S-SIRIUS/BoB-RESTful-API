@@ -1,4 +1,4 @@
-# Rule base Divide ALGO(폐기)
+# Rule Base ALGO(폐기)
 
 📌 모듈화된 알고리즘과 Flask 기반의 RESTful API로 구성
 
