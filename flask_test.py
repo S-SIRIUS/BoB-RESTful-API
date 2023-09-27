@@ -1,22 +1,28 @@
 from flask import Flask, request, Response
 import json
 import openai
-import pandas as pd
 from concurrent.futures import ThreadPoolExecutor
-from CoreModule import Core
 import functools
+import os
+import sys
+
+# Module
+from Find_Question_Model.Search_Match_Omission_Model import Search_Match_Omission_Model
+
+from Customized_ALGO.Cutting import *
+from Customized_ALGO.Matching import *
+from Find_Answer_Model.Answer_Model import *
+from Find_Answer_Model.Answer_CoT_SC import *
+from Find_Question_Model.User_Input_Check import *
 
 
-# 이미 학습된 FastText 모델 로드
-from gensim.models.fasttext import load_facebook_model
 
-openai.api_key = 'my_api'
-model_path="./cc.ko.300.bin"
-model= load_facebook_model(model_path)
 
 app = Flask(__name__)
 
 @app.route('/process-text', methods=['POST'])
+
+
 
 def process_text():
     answer_text = ""
@@ -25,37 +31,33 @@ def process_text():
         return jsonify({'error': 'Data must be in JSON format and contain a "text" field.'}), 400
 
     text = request.json.get('text')
-    print(text)
+    print("들어온 text: ", text)
+    print("\n")
+    user_input = request.json.get('user_input')
 
-    df = Core(text, model)
-    with ThreadPoolExecutor(max_workers=5) as executor:
-        func = functools.partial(get_response, df=df)
-        answer_text = list(executor.map(func, range(len(df))))
+    if user_input is not None and isinstance(user_input, list):
+        print("들어온 유저의 체크박스: ", user_input)
 
-    answer_text = "------------------------------------------------------------------------------------\n".join([ans for ans in answer_text if ans is not None])
+
+    # 임시로 내가 직접 저장 -> 나중에 파일 직접 업로드로 바꿀 예정
+    with open("bob.txt", "w", encoding="utf-8") as file:
+        file.write(text)
+
+    title_dict, title_dict2, omission_text = Search_Match_Omission_Model(user_input)
+
+    result_dict = Cutting(text, title_dict, title_dict2)
+    df = Matching(result_dict)
+    answer_text = Answer_CoT_SC(df)
+
+    omission_text = "*<누락 관련 사항>*\n" + omission_text+"\n\n"
+    answer_text = omission_text + answer_text
+    print(answer_text)
+
+
+    #### 마지막에 백엔드와 연동하면서 json 형태도 바꿀 예정
     response_data = json.dumps({'result': answer_text}, ensure_ascii=False)
     return Response(response_data, content_type="application/json; charset=utf-8")
 
-def create_prompt(i, df):
-    if(df['keywords_matched'][i]!=''):
-        target = '\"'+ df['keywords_matched'][i]+'\"'+"은 이 회사의 방침이야 그리고" + '\"'+ df['instruction'][i]+'\"' + "은 개인정보처리 지침이야"
-        target += "개인정보처리 지침을 보고 이 회사의 방침에서 잘못된 부분이 있다면 찾아서 설명해줘!"
-    else:
-        target="No Question"
-    return target
-
-def get_response(i, df):
-    gpt_prompt = create_prompt(i,df)
-    if gpt_prompt != "No Question":
-        message = [{"role": "user", "content": gpt_prompt}]
-        response = openai.ChatCompletion.create(
-            model="gpt-4",
-            messages=message,
-            temperature=0.2,
-            max_tokens=1000,
-            frequency_penalty=0.0
-        )
-        return response['choices'][0]['message']['content']
-    return None
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=50)
+
