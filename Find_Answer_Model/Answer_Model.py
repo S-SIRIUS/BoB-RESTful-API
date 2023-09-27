@@ -1,11 +1,14 @@
 import pandas as pd
-import config
+import sys
 import os
+
+sys.path.append("C://Users//scw10//PycharmProjects//rest_test//venv//config")
+import config
 api_key = os.getenv("OPENAI_API_KEY")
 
 # Module
-from Prompt_Template import chatchain
-
+from .Answer_Prompt_Template import chatchain
+from .Rule_Validation.Rule_Validation import checking_answer_template
 
 def Answer_Model(df):
     df = df[df['matched_part'] != '']
