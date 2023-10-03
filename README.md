@@ -24,6 +24,8 @@ https://policy.naver.com/policy/privacy.html
 자르는 파트는 분량 상관없음 GPT가 아니라 내가 직접 Custom 알고리즘으로 자른다.
 따라서 자르는 기준을 [대제목\n대제목다음문장] 이렇게 잘라서 유니크한 값으로 고정한다.
 유니크한 값은 SearchTitle 모듈에서 만든다.
+SearchTitle에서 먼저 대제목을 찾은 후, 그 대제목을 다시 LLM에 Chaining하여  [대제목\n대제목다음문장]도 만든다.
+SearchTitle에서의 출력물
    1> [대제목]
    2> [대제목\n대제목다음문장] -> 컷팅을 위한 데이터
 
