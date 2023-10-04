@@ -36,6 +36,7 @@ https://policy.naver.com/policy/privacy.html
 
 ## 4) 항목만 있고 내용이 없는 경우
 각 항목은 unique 제목 찾는 알고리즘으로 찾을 수 있으니, 찾아서 공백인지 검사하는 Rule알고리즘 제작예정
+-> User_Input_check의 Alert_Omission에 기능추가예정
 
 
 
