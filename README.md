@@ -6,7 +6,10 @@
 ![스크린샷 2023-10-03 162532](https://github.com/S-SIRIUS/BoB-RESTful-API/assets/109223193/9fa290ca-7c56-48cd-962e-f185d532f4c3)
 출처: 토스: https://toss.im/privacy-policy?id=22662
 ->
-LLM에서 대제목을 기준으로 그 다음문장까지 추출한다.
+
+1) Search_Title에서 대제목을 리스트로 추출한다.
+2) 추루한 대제목 리스트로 Chaining건다.(Input: chunk된 Text or One Text , 대제목리스트)
+- LLM에서 대제목을 기준으로 그 다음문장까지 추출한다.
 따라서 자르는 기준을 [대제목\n대제목다음문장] 이렇게 잘라서 유니크한 값으로 고정한다.
 유니크한 값은 SearchTitle 모듈에서 만든다.
 SearchTitle에서 먼저 대제목을 찾은 후, 그 대제목을 다시 LLM에 Chaining하여  [대제목\n대제목다음문장]도 만든다.
