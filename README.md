@@ -38,4 +38,3 @@
 ! pip install langchain
 ! pip install gensim
 ! pip install pandas
-! pip install python-dotenv
