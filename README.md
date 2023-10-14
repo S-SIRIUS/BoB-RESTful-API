@@ -8,7 +8,7 @@
 
 ## 📂 파일 구성
 
-### 🌐 flask_test.py
+### 🌐 app.py
 - 📜: 이 파일은 Flask 기반의 RESTful API 기능을 포함함
 - 🔗 API Endpoints**: 
   - `GET /endpoint1`: 엔드포인트1에 대한 설명
