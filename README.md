@@ -1,7 +1,8 @@
 # BoB-RESTful-API
 
 📌 Chaining형식의 LLM과 모듈화된 알고리즘 그리고 Flask 기반의 RESTful API로 구성
-![Department Organization (2)_1](https://github.com/S-SIRIUS/BoB-RESTful-API/assets/109223193/cbc828f6-65da-4a4f-bb73-eae9ac67f784)
+![Department Organization (3)_1](https://github.com/S-SIRIUS/BoB-RESTful-API/assets/109223193/9ede81c7-5e5a-42e2-9592-03c0696119f7)
+
 
 
 
@@ -24,6 +25,10 @@
 - 🛠 : ~~~ (추후 작성)
 
 ### 📂 Find_Answer_Model Package
+- 📜: 이 파일은 모듈화된 주요 알고리즘을 포함함
+- 🛠 : ~~~ (추후 작성)
+
+### 📂 User_Input_Check Package
 - 📜: 이 파일은 모듈화된 주요 알고리즘을 포함함
 - 🛠 : ~~~ (추후 작성)
 ---
