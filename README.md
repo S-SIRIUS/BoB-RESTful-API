@@ -1,14 +1,10 @@
 # BoB-RESTful-API
 
 📌 Chaining형식의 LLM과 모듈화된 알고리즘 그리고 Flask 기반의 RESTful API로 구성
-[모델 구조 추후 작성]
-
-
-
+![Model_Structure](https://github.com/S-SIRIUS/BoB-RESTful-API/assets/109223193/4a5e1b41-0092-477b-a1dc-d0836dddf9ac)
 
 
 ---
-
 
 ## 📂 파일 구성
 
