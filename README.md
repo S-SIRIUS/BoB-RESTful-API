@@ -30,8 +30,7 @@
 
 ### 🔧 필요한 라이브러리 설치
 ```bash
+! pip install Flask
 ! pip install openai
 ! pip install langchain
-! pip install gensim
 ! pip install pandas
-! pip install numpy
