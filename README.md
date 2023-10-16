@@ -35,6 +35,7 @@
 
 ### 🔧 필요한 라이브러리 설치
 ```bash
+! pip install pip install fsspec
 ! pip install Flask
 ! pip install openai
 ! pip install langchain
