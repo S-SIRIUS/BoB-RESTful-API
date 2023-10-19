@@ -38,8 +38,9 @@ python version ==3.11.6
 ```bash
 ! pip install fsspec
 ! pip install Flask
+! pip install pandas
 ! pip install openai
 ! pip install langchain
 ! pip install llama-index==0.6.15
-! pip install pandas
+! pip install transformers==4.24.0
 ! pip install pinecone-client==2.2.4
