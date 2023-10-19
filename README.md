@@ -41,6 +41,6 @@ python version ==3.11.6
 ! pip install pandas
 ! pip install openai
 ! pip install langchain
-! pip install llama-index==0.6.15
-! pip install transformers==4.24.0
+! pip install llama-index==0.8.46
+! pip install transformers==4.34.1
 ! pip install pinecone-client==2.2.4
