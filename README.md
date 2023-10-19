@@ -42,3 +42,4 @@
 ! pip install langchain
 ! pip install llama-index==0.6.15
 ! pip install pandas
+! pip install pinecone-client
