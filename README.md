@@ -34,12 +34,12 @@
 ## 🚀 시작하기
 
 ### 🔧 필요한 라이브러리 설치
+python version ==3.11.6
 ```bash
-! pip install python==3.11.6
 ! pip install fsspec
 ! pip install Flask
 ! pip install openai
 ! pip install langchain
 ! pip install llama-index==0.6.15
 ! pip install pandas
-! pip install pinecone-client
+! pip install pinecone-client==2.2.4
