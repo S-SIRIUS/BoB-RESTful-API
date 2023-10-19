@@ -35,8 +35,10 @@
 
 ### 🔧 필요한 라이브러리 설치
 ```bash
-! pip install pip install fsspec
+! pip install python==3.11.6
+! pip install fsspec
 ! pip install Flask
 ! pip install openai
 ! pip install langchain
+! pip install llama-index==0.6.15
 ! pip install pandas
